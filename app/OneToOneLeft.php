@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class OneToOneLeft extends Model
 {
     public function onetooneright(){
-        return $this->belongsto('App\OneToOneRight');
+        return $this->belongsTo('App\OneToOneRight');
     }
 }

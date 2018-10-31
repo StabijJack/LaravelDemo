@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BillOfMaterial;
+use App\OneToManyOwner;
 use Illuminate\Http\Request;
 
-class BillOfMaterialController extends Controller
+class OneToManyOwnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class BillOfMaterialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BillOfMaterial  $billOfMaterial
+     * @param  \App\OneToManyOwner  $oneToManyOwner
      * @return \Illuminate\Http\Response
      */
-    public function show(BillOfMaterial $billOfMaterial)
+    public function show(OneToManyOwner $oneToManyOwner)
     {
         //
     }
@@ -52,10 +52,10 @@ class BillOfMaterialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BillOfMaterial  $billOfMaterial
+     * @param  \App\OneToManyOwner  $oneToManyOwner
      * @return \Illuminate\Http\Response
      */
-    public function edit(BillOfMaterial $billOfMaterial)
+    public function edit(OneToManyOwner $oneToManyOwner)
     {
         //
     }
@@ -64,10 +64,10 @@ class BillOfMaterialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BillOfMaterial  $billOfMaterial
+     * @param  \App\OneToManyOwner  $oneToManyOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BillOfMaterial $billOfMaterial)
+    public function update(Request $request, OneToManyOwner $oneToManyOwner)
     {
         //
     }
@@ -75,10 +75,10 @@ class BillOfMaterialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BillOfMaterial  $billOfMaterial
+     * @param  \App\OneToManyOwner  $oneToManyOwner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BillOfMaterial $billOfMaterial)
+    public function destroy(OneToManyOwner $oneToManyOwner)
     {
         //
     }

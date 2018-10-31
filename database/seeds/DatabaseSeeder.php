@@ -11,33 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\AllFieldTypes::class,50)->create();
-        factory(App\Category::class, 10)
-            ->create()
-                ->each(function ($u) 
-                    {
-                        for ($i=0; $i < 50; $i++) 
-                        { 
-                            $u->products()
-                            ->save
-                                (
-                                    factory(App\Product::class)
-                                        ->make()
-                                );    
-                        }
-                    }
-                );
-        factory(App\OneToOneRight::class, 10)
-            ->create()
-                ->each(function ($u) 
-                    { 
-                        $u->onetooneleft()
-                        ->save
-                            (
-                                factory(App\OneToOneLeft::class)
-                                    ->make()
-                            );    
-                    }
-                );
+        factory(App\AllFieldTypes::class, 5)->create();
+        factory(App\OneToOneRight::class, 5)->create()
+            ->each(function ($u){ 
+                $u->onetooneleft()->save(factory(App\OneToOneLeft::class)->make());    
+            });
+        factory(App\OneToManyOwner::class, 5)->create()
+            ->each(function($u){
+                $members=factory(App\OneToManyMember::class, 5)->make();
+                foreach ($members as $member) {
+                    $u->onetomanymembers()->save($member);
+                }
+            });
     }
 }

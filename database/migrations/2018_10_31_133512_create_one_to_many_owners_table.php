@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateOneToManyOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->string('name')->unique();
-            $table->unsignedInteger('category_id');
+        Schema::create('one_to_many_owners', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
-            $table->foreign('category_id')
-            ->references('id')->on('categories');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('one_to_many_owners');
     }
 }

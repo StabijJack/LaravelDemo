@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillOfMaterialsTable extends Migration
+class CreateOneToManyMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateBillOfMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bill_of_materials', function (Blueprint $table) {
+        Schema::create('one_to_many_members', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('one_to_many_owner_id');
+            $table->string('car');
             $table->timestamps();
+            $table->foreign('one_to_many_owner_id')->references('id')->on('one_to_many_owners');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateBillOfMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bill_of_materials');
+        Schema::dropIfExists('one_to_many_members');
     }
 }

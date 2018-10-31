@@ -30,5 +30,17 @@ class DatabaseSeeder extends Seeder
                     $u->ManyToManyOwnerRights()->save($right,['reden'=> 'daarom' ]);
                 }
             });
+        factory(App\HasManyThroughTop::class, 5)->create()
+            ->each(function($top){
+                $middles = factory(App\HasManyThroughMiddle::class, 5)->make();
+                foreach ($middles as $middle) {
+                    $top->hasmanythroughmiddles()->save($middle);
+                    $bottoms = factory(App\HasManyThroughBottom::class, 5)->make();
+                    foreach ($bottoms as $bottom) {
+                        $middle->hasmanythroughbottoms()->save($bottom);
+                    }
+                }
+            });
+
     }
 }

@@ -11,9 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        //factory(App\AllFieldTypes::class,50)->create();
-        // factory(App\Category::class,50)->create();
+        factory(App\AllFieldTypes::class,50)->create();
         factory(App\Category::class, 10)
             ->create()
                 ->each(function ($u) 
@@ -28,6 +26,18 @@ class DatabaseSeeder extends Seeder
                                 );    
                         }
                     }
-        );
+                );
+        factory(App\OneToOneRight::class, 10)
+            ->create()
+                ->each(function ($u) 
+                    { 
+                        $u->onetooneleft()
+                        ->save
+                            (
+                                factory(App\OneToOneLeft::class)
+                                    ->make()
+                            );    
+                    }
+                );
     }
 }

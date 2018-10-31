@@ -8,6 +8,6 @@ class Product extends Model
 {
     public function category()
     {
-        return $this->belongsto('App\Product');
+        return $this->belongsto('App\Category');
     }
 }

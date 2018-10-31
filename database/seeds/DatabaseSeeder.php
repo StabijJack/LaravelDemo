@@ -23,5 +23,12 @@ class DatabaseSeeder extends Seeder
                     $u->onetomanymembers()->save($member);
                 }
             });
+        factory(App\ManyToManyOwnerLeft::class, 5)->create()
+            ->each(function($u){
+                $rights = factory(App\ManyToManyOwnerRight::class, 5)->make();
+                foreach ($rights as $right) {
+                    $u->ManyToManyOwnerRights()->save($right,['reden'=> 'daarom' ]);
+                }
+            });
     }
 }

@@ -27,11 +27,11 @@ $factory->define(App\AllFieldTypes::class, function (Faker $faker) {
         'macAddress' => $faker-> macAddress,
         // 'mediumIncrements' ; => $faker->  no way,
         'mediumText'  => $faker->text,
-        // 'morphs'  => $faker-> name,//nog uitzoeken
+        // 'morphs'  //behoord bij de relatiesoort Polymorphic
         // 'multiLineString' => $faker->'LineString(1 1,2 2,3 3)',
         // 'multiPoint'  => $faker-> name,
         // 'multiPolygon => $faker-> name,
-        // 'nullableMorphs'  => $faker-> name,
+        // 'nullableMorphs'  //behoord bij de relatiesoort Polymorphic
         // 'point'  => $faker->name ,
         // 'polygon => $faker-> name,
         // 'smallIncrements'  => $faker=> no way,

@@ -16,8 +16,9 @@ class CreatePolymorphicMembersTable extends Migration
         Schema::create('polymorphic_members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('owner_id');
-            $table->string('owner_type');
+            $table->morphs('owner');//vervangd de volgende 2 regels
+            // $table->unsignedInteger('owner_id');
+            // $table->string('owner_type');
             $table->timestamps();
         });
     }

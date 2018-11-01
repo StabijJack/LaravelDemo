@@ -17,8 +17,9 @@ class CreateManyToManyPolymorphicPivotsTable extends Migration
             $table->increments('id');
             $table->string('reason')->nullable();
             $table->unsignedInteger('many_to_many_polymorphic_tag_id');
-            $table->unsignedInteger('many_to_many_polymorphic_pivot_id');
-            $table->string('many_to_many_polymorphic_pivot_type');
+            $table->morphs('many_to_many_polymorphic_pivot','many_to_many_polymorphic'); //vervangd de volgende 2 regels
+            // $table->unsignedInteger('many_to_many_polymorphic_pivot_id');
+            // $table->string('many_to_many_polymorphic_pivot_type');
             $table->timestamps();
 
         });

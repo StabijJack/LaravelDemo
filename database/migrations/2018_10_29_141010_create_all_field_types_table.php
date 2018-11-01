@@ -39,7 +39,7 @@ class CreateAllFieldTypesTable extends Migration
             $table->macAddress('macAddress')->nullable();
             // $table->mediumIncrements('mediumIncrements');// 1 increment mogelijk
             $table->mediumText('mediumText')->nullable();
-            //$table->morphs('morphs')->default(1,"morphs"); nog uitzoeken
+            // $table->morphs('morphs'); //behoord bij de relatiesoort Polymorphic maar niet nullable dus niet opgenomen
             $table->multiLineString('multiLineString')->nullable();
             $table->multiPoint('multiPoint')->nullable();
             $table->multiPolygon('multiPolygon')->nullable();

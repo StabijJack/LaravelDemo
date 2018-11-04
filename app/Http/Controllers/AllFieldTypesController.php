@@ -14,7 +14,9 @@ class AllFieldTypesController extends Controller
      */
     public function index()
     {
-        //
+        $allFieldTypesS = AllFieldTypes::all();
+
+        return view('allfieldtypes.index',compact('allFieldTypesS'));
     }
 
     /**
@@ -24,7 +26,8 @@ class AllFieldTypesController extends Controller
      */
     public function create()
     {
-        //
+        $allFieldTypes = new AllFieldTypes;
+        return view('allfieldtypes/create', compact('allFieldTypes'));
     }
 
     /**
@@ -35,7 +38,13 @@ class AllFieldTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), ['longText' => 'required|min:2']);
+
+        $allFieldTypes = AllFieldTypes::create($request->all());
+
+        return view('allfieldtypes.show',compact('allFieldTypes'));
+
+        // return redirect('/AllFieldTypes');    
     }
 
     /**
@@ -46,7 +55,7 @@ class AllFieldTypesController extends Controller
      */
     public function show(AllFieldTypes $allFieldTypes)
     {
-        //
+        return view('allfieldtypes.show',compact('allFieldTypes'));
     }
 
     /**
@@ -57,7 +66,7 @@ class AllFieldTypesController extends Controller
      */
     public function edit(AllFieldTypes $allFieldTypes)
     {
-        //
+        return view('allfieldtypes.edit',compact('allFieldTypes'));
     }
 
     /**
@@ -80,6 +89,7 @@ class AllFieldTypesController extends Controller
      */
     public function destroy(AllFieldTypes $allFieldTypes)
     {
-        //
+        $allFieldTypes->delete();
+        return redirect('/allFieldTypes');
     }
 }

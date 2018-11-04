@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AllFieldTypes extends Model
 {
-    //
+    protected $guarded = [];
 }

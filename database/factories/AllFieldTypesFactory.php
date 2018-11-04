@@ -10,7 +10,7 @@ $factory->define(App\AllFieldTypes::class, function (Faker $faker) {
         'boolean' => $faker->boolean(50),
         'char'=> $faker->name,
         'date' => $faker->dateTime(),
-        // 'dateTimeTz'=>$faker->dateTime(),
+        'dateTimeTz'=>now(),
         'decimal' => $faker->biasedNumberBetween(-100,100),
         'double' => $faker-> biasedNumberBetween(-100,100), 
         'enum'  => $faker->randomElement(['easy', 'hard']),

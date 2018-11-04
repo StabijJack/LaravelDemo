@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AllFieldTypesController@index');
+Route::resource('allFieldTypes', 'AllFieldTypesController');
+Route::get('allFieldTypes/{allFieldTypes}/delete', 'AllFieldTypesController@destroy');

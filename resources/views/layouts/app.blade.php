@@ -12,6 +12,13 @@
   </head>
   <body>
     <div class="container-fluid">
+        <a class="btn btn-primary info" href="{{ route('home') }}" role="button">Home</a>
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
+    
         @yield('content')
         @include('layouts.errors')
     </div>

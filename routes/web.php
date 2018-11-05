@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', 'AllFieldTypeController@index');
+Route::view('/', 'home')->name('home');
 Route::resource('allFieldType', 'AllFieldTypeController');
-Route::get('allFieldType/{allFieldType}/delete', 'AllFieldTypeController@destroy');

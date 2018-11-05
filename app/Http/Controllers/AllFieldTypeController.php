@@ -42,7 +42,7 @@ class AllFieldTypeController extends Controller
 
         $allFieldType = AllFieldType::create($request->all());
 
-        return redirect(route('allFieldType.index'));    
+        return redirect(route('allFieldType.index'))->with('status', 'New record stored!'); 
     }
 
     /**
@@ -79,7 +79,7 @@ class AllFieldTypeController extends Controller
         $this->validate(request(), ['longText' => 'required|min:2']);
 
         $allFieldType->update($request->all());
-        return view('allfieldtype.show',compact('allFieldType'));
+        return redirect(route('allFieldType.index'))->with('status', 'Record updated!');
 
     }
 
@@ -92,6 +92,6 @@ class AllFieldTypeController extends Controller
     public function destroy(AllFieldType $allFieldType)
     {
         $allFieldType->delete();
-        return redirect(route('allFieldType.index'));
+        return redirect(route('allFieldType.index'))->with('status', 'Record destroyed!');
     }
 }

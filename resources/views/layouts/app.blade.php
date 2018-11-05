@@ -13,6 +13,8 @@
   <body>
     <div class="container-fluid">
         <a class="btn btn-primary info" href="{{ route('home') }}" role="button">Home</a>
+        <a class="btn btn-primary info" href="{{ url()->previous() }}" role="button">Back</a>
+
         @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}

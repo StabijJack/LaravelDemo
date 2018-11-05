@@ -14,7 +14,8 @@ class OneToOneLeftController extends Controller
      */
     public function index()
     {
-        //
+        $oneToOneLefts = OneToOneLeft::all();
+        return view('onetoone.onetooneLeft.index',compact('oneToOneLefts'));
     }
 
     /**
@@ -24,7 +25,8 @@ class OneToOneLeftController extends Controller
      */
     public function create()
     {
-        //
+        $oneToOneLeft = new OneToOneLeft;
+        return view('onetoone.onetooneLeft.create', compact('oneToOneLeft'));
     }
 
     /**
@@ -35,7 +37,11 @@ class OneToOneLeftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), ['phone' => 'required|min:2']);
+
+        $oneToOneLeft = OneToOneLeft::create($request->all());
+
+        return redirect(route('oneToOneLeft.index'))->with('status', 'New record stored!'); 
     }
 
     /**
@@ -46,7 +52,8 @@ class OneToOneLeftController extends Controller
      */
     public function show(OneToOneLeft $oneToOneLeft)
     {
-        //
+        $oneToOneRight = $oneToOneLeft->one_to_one_right;
+        return view('onetoone.onetooneLeft.show', compact('oneToOneLeft','oneToOneRight'));
     }
 
     /**
@@ -57,7 +64,7 @@ class OneToOneLeftController extends Controller
      */
     public function edit(OneToOneLeft $oneToOneLeft)
     {
-        //
+        return view('onetoone.onetooneLeft.edit', compact('oneToOneLeft'));
     }
 
     /**
@@ -69,7 +76,11 @@ class OneToOneLeftController extends Controller
      */
     public function update(Request $request, OneToOneLeft $oneToOneLeft)
     {
-        //
+        $this->validate(request(), ['phone' => 'required|min:2']);
+
+        $oneToOneLeft->update($request->all());
+
+        return redirect(route('oneToOneLeft.index'))->with('status', 'New record stored!'); 
     }
 
     /**
@@ -80,6 +91,7 @@ class OneToOneLeftController extends Controller
      */
     public function destroy(OneToOneLeft $oneToOneLeft)
     {
-        //
+        $oneToOneLeft->delete();
+        return redirect(route('oneToOneLeft.index'))->with('status', 'Record destroyed!');
     }
 }

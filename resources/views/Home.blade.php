@@ -2,4 +2,5 @@
 @section('title') LaravelDemo Home Page @endsection
 @section('content')
     <a class="btn btn-primary info" href="{{ route('allFieldType.index') }}" role="button">Show All FieldTypes</a>
+    <a class="btn btn-primary info" href="{{ route('onetoonehome') }}" role="button">Show All OneToOne</a>
 @endsection

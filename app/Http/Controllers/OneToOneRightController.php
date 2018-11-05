@@ -14,7 +14,8 @@ class OneToOneRightController extends Controller
      */
     public function index()
     {
-        //
+        $oneToOneRights = OneToOneRight::all();
+        return view('onetoone.onetooneright.index',compact('oneToOneRights'));
     }
 
     /**
@@ -24,7 +25,8 @@ class OneToOneRightController extends Controller
      */
     public function create()
     {
-        //
+        $oneToOneRight = new OneToOneRight;
+        return view('onetoone.onetooneright.create', compact('oneToOneRight'));
     }
 
     /**
@@ -35,7 +37,11 @@ class OneToOneRightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), ['phone' => 'required|min:2']);
+
+        $oneToOneRight = OneToOneRight::create($request->all());
+
+        return redirect(route('oneToOneRight.index'))->with('status', 'New record stored!'); 
     }
 
     /**
@@ -46,7 +52,8 @@ class OneToOneRightController extends Controller
      */
     public function show(OneToOneRight $oneToOneRight)
     {
-        //
+        $oneToOneLeft = $oneToOneRight->one_to_one_left;
+        return view('onetoone.onetooneRight.show', compact('oneToOneRight','oneToOneLeft'));
     }
 
     /**
@@ -57,7 +64,7 @@ class OneToOneRightController extends Controller
      */
     public function edit(OneToOneRight $oneToOneRight)
     {
-        //
+        return view('onetoone.onetooneRight.edit', compact('oneToOneRight'));
     }
 
     /**
@@ -69,7 +76,11 @@ class OneToOneRightController extends Controller
      */
     public function update(Request $request, OneToOneRight $oneToOneRight)
     {
-        //
+        $this->validate(request(), ['phone' => 'required|min:2']);
+
+        $oneToOneRight->update($request->all());
+
+        return redirect(route('oneToOneRight.index'))->with('status', 'New record stored!'); 
     }
 
     /**
@@ -80,6 +91,10 @@ class OneToOneRightController extends Controller
      */
     public function destroy(OneToOneRight $oneToOneRight)
     {
-        //
+        if($oneToOneRight->onetooneleft()->count() > 0){
+            return back()->with('status','Er is nog een owner');
+        }
+        $oneToOneRight->delete();
+        return redirect(route('oneToOneRight.index'))->with('status', 'Record destroyed!');
     }
 }

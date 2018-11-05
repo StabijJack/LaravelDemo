@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class OneToOneRight extends Model
 {
-    public function onetooneleft()
+    protected $guarded = [];
+
+    public function one_to_one_left()
     {
         return $this->hasOne('App\OneToOneLeft');
     }

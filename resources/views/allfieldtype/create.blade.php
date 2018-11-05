@@ -7,7 +7,7 @@
     <div class="card">
       <div class="card-body">
         @include('AllFieldType.submenu')
-        <form action="/allFieldType" method="POST">
+        <form action="{{ route('allFieldType.store') }}" method="POST">
             @csrf
             @include('allfieldtype.allfields')        
             <button type="submit" class="btn btn-primary">Submit</button>

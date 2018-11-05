@@ -42,7 +42,7 @@ class AllFieldTypeController extends Controller
 
         $allFieldType = AllFieldType::create($request->all());
 
-        return redirect('/allFieldType');    
+        return redirect(route('allFieldType.index'));    
     }
 
     /**
@@ -92,6 +92,6 @@ class AllFieldTypeController extends Controller
     public function destroy(AllFieldType $allFieldType)
     {
         $allFieldType->delete();
-        return redirect('/allFieldType');
+        return redirect(route('allFieldType.index'));
     }
 }

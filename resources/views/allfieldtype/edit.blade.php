@@ -7,7 +7,7 @@
     <div class="card">
       <div class="card-body">
         @include('allfieldtype.submenu')
-        <form action="/allFieldType/{{ $allFieldType->id }}" method="POST">
+        <form action="{{ route('allFieldType.update', $allFieldType->id) }}"" method="POST">
           @method('PATCH')
           @csrf
           @include('allfieldtype.allfields')        

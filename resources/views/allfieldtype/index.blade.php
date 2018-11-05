@@ -15,7 +15,7 @@
       </div>
     @endforeach
   @else 
-    <a class="btn btn-primary info" href="/allFieldType/create" role="button"> New</a>
+    <a class="btn btn-primary info" href="{{ route('allFieldType.create') }}" role="button"> New</a>
   @endif
 </div>
 @endsection

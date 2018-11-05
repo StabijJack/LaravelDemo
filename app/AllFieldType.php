@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AllFieldTypes extends Model
+class AllFieldType extends Model
 {
     protected $guarded = [];
 }

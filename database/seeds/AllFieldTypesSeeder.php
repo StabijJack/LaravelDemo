@@ -11,6 +11,6 @@ class AllFieldTypesSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\AllFieldTypes::class, 5)->create();
+        factory(App\AllFieldType::class, 5)->create();
     }
 }

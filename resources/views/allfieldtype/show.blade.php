@@ -1,13 +1,13 @@
 @extends('layouts.app') 
 
-@section('title') show AllFieldTypes @endsection
+@section('title') show AllFieldType @endsection
 @section("content")
 <div class="row">
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        @include('allfieldtypes.submenu')
-        @include('allfieldtypes.allfields')
+        @include('allfieldtype.submenu')
+        @include('allfieldtype.allfields')
       </div>
     </div>
   </div>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AllFieldTypes;
+use App\AllFieldType;
 use Illuminate\Http\Request;
 
-class AllFieldTypesController extends Controller
+class AllFieldTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class AllFieldTypesController extends Controller
      */
     public function index()
     {
-        $allFieldTypesS = AllFieldTypes::all();
+        $allFieldTypes = AllFieldType::all();
 
-        return view('allfieldtypes.index',compact('allFieldTypesS'));
+        return view('allfieldtype.index',compact('allFieldTypes'));
     }
 
     /**
@@ -26,8 +26,8 @@ class AllFieldTypesController extends Controller
      */
     public function create()
     {
-        $allFieldTypes = new AllFieldTypes;
-        return view('allfieldtypes/create', compact('allFieldTypes'));
+        $allFieldType = new AllFieldType;
+        return view('allfieldtype/create', compact('allFieldType'));
     }
 
     /**
@@ -40,56 +40,58 @@ class AllFieldTypesController extends Controller
     {
         $this->validate(request(), ['longText' => 'required|min:2']);
 
-        $allFieldTypes = AllFieldTypes::create($request->all());
+        $allFieldType = AllFieldType::create($request->all());
 
-        return view('allfieldtypes.show',compact('allFieldTypes'));
-
-        // return redirect('/AllFieldTypes');    
+        return redirect('/allFieldType');    
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\AllFieldTypes  $allFieldTypes
+     * @param  \App\AllFieldType  $allFieldType
      * @return \Illuminate\Http\Response
      */
-    public function show(AllFieldTypes $allFieldTypes)
+    public function show(AllFieldType $allFieldType)
     {
-        return view('allfieldtypes.show',compact('allFieldTypes'));
+        return view('allfieldtype.show',compact('allFieldType'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\AllFieldTypes  $allFieldTypes
+     * @param  \App\AllFieldType  $allFieldType
      * @return \Illuminate\Http\Response
      */
-    public function edit(AllFieldTypes $allFieldTypes)
+    public function edit(AllFieldType $allFieldType)
     {
-        return view('allfieldtypes.edit',compact('allFieldTypes'));
+        return view('allfieldtype.edit',compact('allFieldType'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AllFieldTypes  $allFieldTypes
+     * @param  \App\AllFieldType  $allFieldType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AllFieldTypes $allFieldTypes)
+    public function update(Request $request, AllFieldType $allFieldType)
     {
-        //
+        $this->validate(request(), ['longText' => 'required|min:2']);
+
+        $allFieldType->update($request->all());
+        return view('allfieldtype.show',compact('allFieldType'));
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\AllFieldTypes  $allFieldTypes
+     * @param  \App\AllFieldType  $allFieldType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AllFieldTypes $allFieldTypes)
+    public function destroy(AllFieldType $allFieldType)
     {
-        $allFieldTypes->delete();
-        return redirect('/allFieldTypes');
+        $allFieldType->delete();
+        return redirect('/allFieldType');
     }
 }

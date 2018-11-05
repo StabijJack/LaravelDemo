@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'AllFieldTypesController@index');
-Route::resource('allFieldTypes', 'AllFieldTypesController');
-Route::get('allFieldTypes/{allFieldTypes}/delete', 'AllFieldTypesController@destroy');
+Route::get('/', 'AllFieldTypeController@index');
+Route::resource('allFieldType', 'AllFieldTypeController');
+Route::get('allFieldType/{allFieldType}/delete', 'AllFieldTypeController@destroy');

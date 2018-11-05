@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\AllFieldTypes::class, function (Faker $faker) {
+$factory->define(App\AllFieldType::class, function (Faker $faker) {
     return [
         // 'bigIncrements' => no way,
         'bigInteger' => $faker->biasedNumberBetween(-100,100),

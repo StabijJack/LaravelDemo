@@ -13,8 +13,6 @@
         </div>
       </div>
     @endforeach
-  @else 
-    <a class="btn btn-primary info" href="{{ route('oneToOneLeft.create') }}" role="button"> New</a>
   @endif
 </div>
 @endsection

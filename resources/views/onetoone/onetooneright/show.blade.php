@@ -8,11 +8,11 @@
       <div class="card-body">
         @include('onetoone.onetooneright.submenu')
         @include('onetoone.onetooneright.update')
-        @if($oneToOneLeft)
+        @if($oneToOneLeft->id > 0)
           @include('onetoone.onetooneleft.update')
           @include('onetoone.onetooneleft.destroy')
         @else
-          <a class="btn btn-primary info" href="{{ route('oneToOneLeft.create') }}" role="button"> New</a>
+          @include('onetoone.onetooneleft.store')
         @endif 
       </div>
     </div>

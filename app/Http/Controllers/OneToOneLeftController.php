@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\OneToOneLeft;
+use App\OneToOneRight;
 use Illuminate\Http\Request;
 
 class OneToOneLeftController extends Controller
@@ -22,7 +23,9 @@ class OneToOneLeftController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     * 
+     * is not used because owner needed
+     */ 
     public function create()
     {
         $oneToOneLeft = new OneToOneLeft;
@@ -35,13 +38,13 @@ class OneToOneLeftController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OneToOneRight $oneToOneRight )
     {
-        $this->validate(request(), ['phone' => 'required|min:2']);
+        $this->validate(request(), ['name' => 'required|min:2']);
 
-        $oneToOneLeft = OneToOneLeft::create($request->all());
+        $oneToOneLeft = $oneToOneRight->one_to_one_left()->create(request()->all());
 
-        return back(route('oneToOneLeft.index'))->with('status', 'New record stored!'); 
+        return back()->with('status', 'New record stored!'); 
     }
 
     /**

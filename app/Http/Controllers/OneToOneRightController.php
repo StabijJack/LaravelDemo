@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\OneToOneRight;
+use App\OneToOneLeft;
 use Illuminate\Http\Request;
 
 class OneToOneRightController extends Controller
@@ -53,6 +54,7 @@ class OneToOneRightController extends Controller
     public function show(OneToOneRight $oneToOneRight)
     {
         $oneToOneLeft = $oneToOneRight->one_to_one_left;
+        $oneToOneLeft = ($oneToOneLeft) ? $oneToOneLeft :new OneToOneLeft ;
         return view('onetoone.onetooneRight.show', compact('oneToOneRight','oneToOneLeft'));
     }
 

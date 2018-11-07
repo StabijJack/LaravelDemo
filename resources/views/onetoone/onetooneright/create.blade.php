@@ -7,11 +7,7 @@
     <div class="card">
       <div class="card-body">
         @include('onetoone.onetooneright.submenu')
-        <form action="{{ route('oneToOneRight.store') }}" method="POST">
-            @csrf
-            @include('onetoone.onetooneright.allfields')        
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        @include('onetoone.onetooneright.store')
       </div>
     </div>
   </div>

@@ -41,7 +41,7 @@ class OneToOneLeftController extends Controller
 
         $oneToOneLeft = OneToOneLeft::create($request->all());
 
-        return redirect(route('oneToOneLeft.index'))->with('status', 'New record stored!'); 
+        return back(route('oneToOneLeft.index'))->with('status', 'New record stored!'); 
     }
 
     /**
@@ -76,11 +76,11 @@ class OneToOneLeftController extends Controller
      */
     public function update(Request $request, OneToOneLeft $oneToOneLeft)
     {
-        $this->validate(request(), ['phone' => 'required|min:2']);
+        $this->validate(request(), ['name' => 'required|min:2']);
 
         $oneToOneLeft->update($request->all());
 
-        return redirect(route('oneToOneLeft.index'))->with('status', 'New record stored!'); 
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -92,6 +92,6 @@ class OneToOneLeftController extends Controller
     public function destroy(OneToOneLeft $oneToOneLeft)
     {
         $oneToOneLeft->delete();
-        return redirect(route('oneToOneLeft.index'))->with('status', 'Record destroyed!');
+        return back()->with('status', 'Record destroyed!');
     }
 }

@@ -7,12 +7,7 @@
     <div class="card">
       <div class="card-body">
         @include('onetoone.onetooneright.submenu')
-        <form action="{{ route('oneToOneRight.update', $oneToOneRight->id) }}"" method="POST">
-          @method('PATCH')
-          @csrf
-          @include('onetoone.onetooneright.allfields')        
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        @include('onetoone.onetooneright.update')
       </div>
     </div>
   </div>

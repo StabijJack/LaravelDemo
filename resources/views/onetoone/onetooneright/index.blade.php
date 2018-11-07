@@ -9,7 +9,7 @@
         <div class="card">
           <div class="card-body">
             @include('onetoone.onetooneright.submenu')
-            @include('onetoone.onetooneright.allfields')
+            @include('onetoone.onetooneright.update')
           </div>
         </div>
       </div>

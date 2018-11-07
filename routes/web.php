@@ -12,7 +12,9 @@
 */
 
 Route::view('/', 'home')->name('home');
+
 Route::resource('allFieldType', 'AllFieldTypeController');
+
 route::view('/onetoone', 'onetoone.onetoonehome')->name('onetoonehome');
 Route::resource('oneToOneRight', 'OneToOneRightController');
 Route::resource('oneToOneLeft', 'OneToOneLeftController');

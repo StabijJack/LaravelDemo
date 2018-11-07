@@ -79,8 +79,7 @@ class OneToOneRightController extends Controller
         $this->validate(request(), ['phone' => 'required|min:2']);
 
         $oneToOneRight->update($request->all());
-
-        return redirect(route('oneToOneRight.index'))->with('status', 'New record stored!'); 
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -91,7 +90,7 @@ class OneToOneRightController extends Controller
      */
     public function destroy(OneToOneRight $oneToOneRight)
     {
-        if($oneToOneRight->onetooneleft()->count() > 0){
+        if($oneToOneRight->one_to_one_left()->count() > 0){
             return back()->with('status','Er is nog een owner');
         }
         $oneToOneRight->delete();

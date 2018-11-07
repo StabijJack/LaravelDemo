@@ -7,9 +7,12 @@
     <div class="card">
       <div class="card-body">
         @include('onetoone.onetooneright.submenu')
-        @include('onetoone.onetooneright.allfields')  
+        @include('onetoone.onetooneright.update')
         @if($oneToOneLeft)
-          @include('onetoone.onetooneleft.allfields')       
+          @include('onetoone.onetooneleft.update')
+          @include('onetoone.onetooneleft.destroy')
+        @else
+          <a class="btn btn-primary info" href="{{ route('oneToOneLeft.create') }}" role="button"> New</a>
         @endif 
       </div>
     </div>

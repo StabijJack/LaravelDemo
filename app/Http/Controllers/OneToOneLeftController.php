@@ -42,7 +42,7 @@ class OneToOneLeftController extends Controller
     {
         $this->validate(request(), ['name' => 'required|min:2']);
 
-        $oneToOneLeft = $oneToOneRight->one_to_one_left()->create(request()->all());
+        $oneToOneLeft = $oneToOneRight->oneToOneLeft()->create(request()->all());
 
         return back()->with('status', 'New record stored!'); 
     }
@@ -55,7 +55,7 @@ class OneToOneLeftController extends Controller
      */
     public function show(OneToOneLeft $oneToOneLeft)
     {
-        $oneToOneRight = $oneToOneLeft->one_to_one_right;
+        $oneToOneRight = $oneToOneLeft->oneToOneRight;
         return view('onetoone.onetooneLeft.show', compact('oneToOneLeft','oneToOneRight'));
     }
 

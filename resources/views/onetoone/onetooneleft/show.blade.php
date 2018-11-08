@@ -8,7 +8,6 @@
         @include('onetoone.onetooneleft.submenu')
         @include('onetoone.onetooneleft.update')
         @include('onetoone.onetooneright.update')
-        @include('onetoone.onetooneright.destroy')
       </div>
     </div>
   </div>

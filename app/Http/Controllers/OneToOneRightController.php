@@ -53,7 +53,7 @@ class OneToOneRightController extends Controller
      */
     public function show(OneToOneRight $oneToOneRight)
     {
-        $oneToOneLeft = $oneToOneRight->one_to_one_left;
+        $oneToOneLeft = $oneToOneRight->oneToOneLeft;
         $oneToOneLeft = ($oneToOneLeft) ? $oneToOneLeft :new OneToOneLeft ;
         return view('onetoone.onetooneRight.show', compact('oneToOneRight','oneToOneLeft'));
     }
@@ -92,7 +92,7 @@ class OneToOneRightController extends Controller
      */
     public function destroy(OneToOneRight $oneToOneRight)
     {
-        if($oneToOneRight->one_to_one_left()->count() > 0){
+        if($oneToOneRight->oneToOneLeft()->count() > 0){
             return back()->with('status','Er is nog een owner');
         }
         $oneToOneRight->delete();

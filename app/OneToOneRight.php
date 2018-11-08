@@ -8,7 +8,7 @@ class OneToOneRight extends Model
 {
     protected $guarded = [];
 
-    public function one_to_one_left()
+    public function oneToOneLeft()
     {
         return $this->hasOne('App\OneToOneLeft');
     }

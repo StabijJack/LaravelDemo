@@ -13,7 +13,7 @@ class OneToOneSeeder extends Seeder
     {
         factory(App\OneToOneRight::class, 5)->create()
         ->each(function ($u){ 
-            $u->one_to_one_left()->save(factory(App\OneToOneLeft::class)->make());    
+            $u->oneToOneLeft()->save(factory(App\OneToOneLeft::class)->make());    
         });
     }
 }

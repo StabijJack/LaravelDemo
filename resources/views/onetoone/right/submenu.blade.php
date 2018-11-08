@@ -3,5 +3,5 @@
 @if ($oneToOneRight->id > 0)
     <a class="btn btn-primary info" href="{{ route('oneToOneRight.show', $oneToOneRight->id) }}" role="button"> Show</a>
     <a class="btn btn-primary warning" href="{{ route('oneToOneRight.edit', $oneToOneRight->id) }}" role=" button"> Edit</a>
-    @include('onetoone.onetooneright.destroy')
+    @include('onetoone.right.destroy')
 @endif

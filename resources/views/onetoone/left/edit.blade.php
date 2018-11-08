@@ -5,9 +5,8 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        @include('onetoone.onetooneleft.submenu')
-        @include('onetoone.onetooneleft.update')
-        @include('onetoone.onetooneright.update')
+        @include('onetoone.left.submenu')
+        @include('onetoone.left.update')
       </div>
     </div>
   </div>

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class OneToManyMember extends Model
 {
-    public function OneToManyOwner(){
+    protected $guarded = [];
+
+    public function oneToManyOwner(){
         return $this->belongsTo('App\OneToManyOwner');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\OneToManyMember;
+use App\OneToManyOwner;
 use Illuminate\Http\Request;
 
 class OneToManyMemberController extends Controller
@@ -14,7 +15,8 @@ class OneToManyMemberController extends Controller
      */
     public function index()
     {
-        //
+        $oneToManyMembers = OneToManyMember::all();
+        return view('onetomany.member.index', compact('oneToManyMembers'));
     }
 
     /**
@@ -24,7 +26,9 @@ class OneToManyMemberController extends Controller
      */
     public function create()
     {
-        //
+        // not used because owner is mandatory
+        $oneToManyMember = new OneToManyMember;
+        return view('onetomany.member.create', compact('oneToManyMember'));
     }
 
     /**
@@ -33,9 +37,14 @@ class OneToManyMemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OneToManyOwner $oneToManyOwner)
     {
-        //
+        $this->validate(request(), ['car' => 'required|min:2']);
+
+        $oneToManyMember = $oneToManyOwner->oneToManyMembers()->create(request()->all());
+
+        return back()->with('status', 'New record stored!'); 
+
     }
 
     /**
@@ -46,7 +55,8 @@ class OneToManyMemberController extends Controller
      */
     public function show(OneToManyMember $oneToManyMember)
     {
-        //
+        $oneToManyOwner = $oneToManyMember->oneToManyOwner;
+        return view('onetomany.member.show', compact('oneToManyMember', 'oneToManyOwner'));
     }
 
     /**
@@ -57,7 +67,7 @@ class OneToManyMemberController extends Controller
      */
     public function edit(OneToManyMember $oneToManyMember)
     {
-        //
+        return view('onetomany.member.edit', compact('oneToManyMember'));
     }
 
     /**
@@ -69,7 +79,11 @@ class OneToManyMemberController extends Controller
      */
     public function update(Request $request, OneToManyMember $oneToManyMember)
     {
-        //
+        $this->validate(request(), ['car' => 'required|min:2']);
+
+        $oneToManyMember->update($request->all());
+
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -80,6 +94,12 @@ class OneToManyMemberController extends Controller
      */
     public function destroy(OneToManyMember $oneToManyMember)
     {
-        //
+        $oneToManyMember->delete();
+        $url = url()->previous();
+        if(preg_match('*oneToManyMember/[0-9]*',$url)){
+            return redirect(Route('oneToManyMember.index'))->with('status', 'Record destroyed!');
+        }
+
+        return back()->with('status', 'Record destroyed!');
     }
 }

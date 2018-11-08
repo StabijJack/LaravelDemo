@@ -16,7 +16,7 @@ class OneToOneLeftController extends Controller
     public function index()
     {
         $oneToOneLefts = OneToOneLeft::all();
-        return view('onetoone.onetooneLeft.index',compact('oneToOneLefts'));
+        return view('onetoone.left.index',compact('oneToOneLefts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class OneToOneLeftController extends Controller
     public function create()
     {
         $oneToOneLeft = new OneToOneLeft;
-        return view('onetoone.onetooneLeft.create', compact('oneToOneLeft'));
+        return view('onetoone.left.create', compact('oneToOneLeft'));
     }
 
     /**
@@ -56,7 +56,7 @@ class OneToOneLeftController extends Controller
     public function show(OneToOneLeft $oneToOneLeft)
     {
         $oneToOneRight = $oneToOneLeft->oneToOneRight;
-        return view('onetoone.onetooneLeft.show', compact('oneToOneLeft','oneToOneRight'));
+        return view('onetoone.left.show', compact('oneToOneLeft','oneToOneRight'));
     }
 
     /**
@@ -67,7 +67,7 @@ class OneToOneLeftController extends Controller
      */
     public function edit(OneToOneLeft $oneToOneLeft)
     {
-        return view('onetoone.onetooneLeft.edit', compact('oneToOneLeft'));
+        return view('onetoone.left.edit', compact('oneToOneLeft'));
     }
 
     /**

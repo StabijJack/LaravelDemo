@@ -19,3 +19,8 @@ route::view('/onetoone', 'onetoone.onetoonehome')->name('onetoonehome');
 Route::resource('oneToOneRight', 'OneToOneRightController');
 Route::post('/oneToOneRight/{oneToOneRight}/oneToOneLeft', 'OneToOneLeftController@store')->name('onetoonestore');
 Route::resource('oneToOneLeft', 'OneToOneLeftController');
+
+route::view('/onetomany', 'onetomany.onetomanyhome')->name('onetomanyhome');
+Route::resource('oneToManyOwner', 'OneToManyOwnerController');
+Route::post('/oneToManyOwner/{oneToManyOwner}/oneToManyMember', 'OneToManyMemberController@store')->name('onetomanystore');
+Route::resource('oneToManyMember', 'OneToManyMemberController');

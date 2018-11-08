@@ -1,13 +1,13 @@
 @extends('layouts.app') 
 
-@section('title') Create OneToOneRight @endsection
 @section("content")
 <div class="row">
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        @include('onetoone.onetooneright.submenu')
-        @include('onetoone.onetooneright.store')
+        <h2>Owner</h2>
+        @include('onetomany.owner.submenu')
+        @include('onetomany.owner.store')
       </div>
     </div>
   </div>

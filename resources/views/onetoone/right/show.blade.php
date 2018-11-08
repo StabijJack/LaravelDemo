@@ -6,13 +6,13 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        @include('onetoone.onetooneright.submenu')
-        @include('onetoone.onetooneright.update')
+        @include('onetoone.right.submenu')
+        @include('onetoone.right.update')
         @if($oneToOneLeft->id > 0)
-          @include('onetoone.onetooneleft.update')
-          @include('onetoone.onetooneleft.destroy')
+          @include('onetoone.left.update')
+          @include('onetoone.left.destroy')
         @else
-          @include('onetoone.onetooneleft.store')
+          @include('onetoone.left.store')
         @endif 
       </div>
     </div>

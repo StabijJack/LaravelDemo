@@ -8,8 +8,8 @@
       <div class="col-3">
         <div class="card">
           <div class="card-body">
-            @include('onetoone.onetooneright.submenu')
-            @include('onetoone.onetooneright.update')
+            @include('onetoone.right.submenu')
+            @include('onetoone.right.update')
           </div>
         </div>
       </div>

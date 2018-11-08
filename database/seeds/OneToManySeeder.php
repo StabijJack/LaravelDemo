@@ -12,10 +12,10 @@ class OneToManySeeder extends Seeder
     public function run()
     {
         factory(App\OneToManyOwner::class, 5)->create()
-            ->each(function($u){
+            ->each(function($owner){
                 $members=factory(App\OneToManyMember::class, 5)->make();
                 foreach ($members as $member) {
-                    $u->onetomanymembers()->save($member);
+                    $owner->oneToManyMembers()->save($member);
                 }
             });
 

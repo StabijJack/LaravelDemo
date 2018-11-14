@@ -15,7 +15,7 @@ class ManyToManySeeder extends Seeder
         ->each(function($u){
             $rights = factory(App\ManyToManyOwnerRight::class, 5)->make();
             foreach ($rights as $right) {
-                $u->ManyToManyOwnerRights()->save($right,['reden'=> 'daarom' ]);
+                $u->manyToManyOwnerRights()->save($right,['reden'=> 'daarom' ]);
             }
         });
 

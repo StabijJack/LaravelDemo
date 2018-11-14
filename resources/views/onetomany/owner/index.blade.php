@@ -3,7 +3,7 @@
 @section("content")
 <h2>Owners</h2>
 <div class="row">
-  @if($oneToManyOwners->count() > 0) 
+s  @if($oneToManyOwners->count() > 0) 
     @foreach($oneToManyOwners as $oneToManyOwner)
       <div class="col-3">
         <div class="card">

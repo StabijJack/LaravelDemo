@@ -19,7 +19,9 @@ class CreateManyToManyPivotsTable extends Migration
             $table->unsignedInteger('many_to_many_owner_right_id');
             $table->string('reden');
             $table->timestamps();
-            $table->unique(['many_to_many_owner_left_id','many_to_many_owner_right_id'],'Combinatie');
+            $table->foreign('many_to_many_owner_left_id')->references('id')->on('many_to_many_owner_lefts');
+            $table->foreign('many_to_many_owner_right_id')->references('id')->on('many_to_many_owner_rights');
+
         });
     }
 

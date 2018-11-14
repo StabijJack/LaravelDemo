@@ -36,9 +36,9 @@ class OneToManyOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OneToManyOwner $request)
+    public function store(Request $request)
     {
-        $this->validate(request(),['name', 'required|min:2']);
+        $this->validate(request(),['name' => 'required|min:2']);
         $oneToManyOwner = OnetoManyOwner::create($request->all());
         return redirect(route('oneToManyOwner.index'))->with('status', 'New record stored!');
     }

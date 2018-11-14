@@ -24,3 +24,8 @@ route::view('/onetomany', 'onetomany.onetomanyhome')->name('onetomanyhome');
 Route::resource('oneToManyOwner', 'OneToManyOwnerController');
 Route::post('/oneToManyOwner/{oneToManyOwner}/oneToManyMember', 'OneToManyMemberController@store')->name('onetomanystore');
 Route::resource('oneToManyMember', 'OneToManyMemberController');
+
+route::view('/manytomany', 'manytomany.manytomanyhome')->name('manytomanyhome');
+Route::resource('manyToManyOwnerLeft', 'ManyToManyOwnerLeftController');
+Route::resource('manyToManyOwnerRight', 'ManyToManyOwnerRightController');
+Route::resource('manyToManyPivot', 'ManyToManyPivotController');

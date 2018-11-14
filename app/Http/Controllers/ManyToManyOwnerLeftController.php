@@ -14,7 +14,8 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function index()
     {
-        //
+        $manyToManyOwnerLefts = ManyToManyOwnerLeft::all();
+        return view('manytomany.left.index', compact('manyToManyOwnerLefts'));
     }
 
     /**
@@ -24,7 +25,8 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function create()
     {
-        //
+        $manyToManyOwnerLeft = new ManyToManyOwnerLeft;
+        return view('manytomany.left.create', compact('manyToManyOwnerLeft'));
     }
 
     /**
@@ -35,7 +37,9 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),['name'=> 'required|min:2']);
+        $manyToManyOwnerLeft = ManyToManyOwnerLeft::create($request->all());
+        return redirect(route('manyToManyOwnerLeft.index'))->with('status', 'record opgeslagen');
     }
 
     /**
@@ -46,7 +50,8 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function show(ManyToManyOwnerLeft $manyToManyOwnerLeft)
     {
-        //
+        $manyToManyOwnerRights = $manyToManyOwnerLeft->manyToManyOwnerRights()->get(); 
+        return view('manytomany.left.show', compact('manyToManyOwnerLeft', 'manyToManyOwnerRights'));
     }
 
     /**
@@ -57,7 +62,9 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function edit(ManyToManyOwnerLeft $manyToManyOwnerLeft)
     {
-        //
+        $manyToManyOwnerRights = $manyToManyOwnerLeft->manyToManyOwnerRights()->get(); 
+        return view('manytomany.left.edit', compact('manyToManyOwnerLeft', 'manyToManyOwnerRights'));
+
     }
 
     /**
@@ -69,7 +76,9 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function update(Request $request, ManyToManyOwnerLeft $manyToManyOwnerLeft)
     {
-        //
+        $this->validate(request(),['name'=>'required|min:2']);
+        $manyToManyOwnerLeft ->update($request->all());
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -80,6 +89,12 @@ class ManyToManyOwnerLeftController extends Controller
      */
     public function destroy(ManyToManyOwnerLeft $manyToManyOwnerLeft)
     {
-        //
+       
+        if($manyToManyOwnerLeft->manyToManyOwnerRights()->count() > 0){
+            return back()->with('status','Er zijn nog members');
+        }
+        $manyToManyOwnerLeft->delete();
+        return redirect(route('manyToManyOwnerLeft.index'))->with('status', 'Record destroyed!');
+
     }
 }

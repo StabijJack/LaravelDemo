@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ManyToManyOwnerRight extends Model
 {
-    public function ManyToManyOwnerlefts(){
-        return $this->belongsToMany('App\ManyToManyOwnerLeft','many_to_many_pivots');
+    protected $guarded = [];
+
+    public function manyToManyOwnerlefts(){
+        return $this->belongsToMany('App\ManyToManyOwnerLeft','many_to_many_pivots')->withTimestamps()->withPivot('id','reden');
     }
 }

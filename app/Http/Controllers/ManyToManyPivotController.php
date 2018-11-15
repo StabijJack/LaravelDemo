@@ -6,6 +6,7 @@ use App\ManyToManyPivot;
 use App\ManyToManyOwnerLeft;
 use App\ManyToManyOwnerRight;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ManyToManyPivotController extends Controller
 {
@@ -53,7 +54,7 @@ class ManyToManyPivotController extends Controller
         else {
             $origin = '';
         }
-        $manyToManyPivot = new ManyToManyPivot;
+        $manyToManyPivot = ManyToManyPivot::make(['id' => 0 ]);// om aan te geven dat het een nieuwe is
         return view('manytomany.pivot.create',compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights', 'origin'));
     }
 
@@ -66,7 +67,25 @@ class ManyToManyPivotController extends Controller
     public function store(Request $request)
     {
         $origin = request('origin', '');
-        $this->validate(request(),['reden'=> 'required|min:2']);
+        $this->validate(request(),[
+            'reden'=> 'required|min:2' ,
+            'many_to_many_owner_left_id' => 'required',
+            'many_to_many_owner_right_id' => [
+                'required',
+                Rule::unique('many_to_many_pivots')->where(function ($query) use ($request){
+                    return $query
+                        ->whereMany_to_many_owner_left_id($request->many_to_many_owner_left_id)
+                        ->whereMany_to_many_owner_right_id($request->many_to_many_owner_right_id);
+                }),
+            ],
+        ],
+        [
+            'many_to_many_owner_right_id.unique' => __('messages.many_to_many_pivots.error.unique', [
+                'many_to_many_owner_left_id' => $request->many_to_many_owner_left_id,
+                'many_to_many_owner_right_id' => $request->many_to_many_owner_right_id
+            ]),
+        ]);
+
         $manyToManyPivot= ManyToManyPivot::create(request(['reden','many_to_many_owner_left_id','many_to_many_owner_right_id']));
         if ($origin == 'L'){
             $manyToManyOwnerLeft = $manyToManyPivot->manyToManyOwnerLeft;
@@ -115,7 +134,25 @@ class ManyToManyPivotController extends Controller
      */
     public function update(Request $request, ManyToManyPivot $manyToManyPivot)
     {
-        $this->validate(request(),['reden'=> 'required|min:2']);
+        $this->validate(request(),[
+            'reden'=> 'required|min:2',
+            'many_to_many_owner_left_id' => 'required',
+            'many_to_many_owner_right_id' => [
+                'required',
+                Rule::unique('many_to_many_pivots')->where(function ($query) use ($request,$manyToManyPivot){
+                    return $query
+                        ->whereMany_to_many_owner_left_id($request->many_to_many_owner_left_id)
+                        ->whereMany_to_many_owner_right_id($request->many_to_many_owner_right_id)
+                        ->whereNotIn('id',[$manyToManyPivot->id]);
+                }),
+            ],
+        ],
+        [
+            'many_to_many_owner_right_id.unique' => __('messages.many_to_many_pivots.error.unique', [
+                'many_to_many_owner_left_id' => $request->many_to_many_owner_left_id,
+                'many_to_many_owner_right_id' => $request->many_to_many_owner_right_id
+            ]),
+        ]);
         $manyToManyPivot->update($request->all());
         return back()->with('status', 'Record updated!');
     }

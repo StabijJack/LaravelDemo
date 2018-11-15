@@ -15,12 +15,13 @@ class CreateManyToManyPivotsTable extends Migration
     {
         Schema::create('many_to_many_pivots', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('many_to_many_owner_left_id');
-            $table->unsignedInteger('many_to_many_owner_right_id');
+            $table->unsignedInteger('many_to_many_owner_left_id')->index();
+            $table->unsignedInteger('many_to_many_owner_right_id')->index();
             $table->string('reden');
             $table->timestamps();
             $table->foreign('many_to_many_owner_left_id')->references('id')->on('many_to_many_owner_lefts');
             $table->foreign('many_to_many_owner_right_id')->references('id')->on('many_to_many_owner_rights');
+            $table->unique(['many_to_many_owner_left_id','many_to_many_owner_right_id'], 'combination');
 
         });
     }

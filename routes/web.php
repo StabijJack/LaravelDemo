@@ -29,3 +29,5 @@ route::view('/manytomany', 'manytomany.manytomanyhome')->name('manytomanyhome');
 Route::resource('manyToManyOwnerLeft', 'ManyToManyOwnerLeftController');
 Route::resource('manyToManyOwnerRight', 'ManyToManyOwnerRightController');
 Route::resource('manyToManyPivot', 'ManyToManyPivotController');
+
+route::resource('hasManyThroughTop', 'HasManyThroughTopController');

@@ -14,7 +14,8 @@ class HasManyThroughTopController extends Controller
      */
     public function index()
     {
-        //
+        $hasManyThroughTops = HasManyThroughTop::all();
+        return view('hasmanythrough.index', compact('hasManyThroughTops'));
     }
 
     /**

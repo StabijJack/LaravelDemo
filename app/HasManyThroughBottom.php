@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HasManyThroughBottom extends Model
 {
-    public function hasmanythroughmiddle(){
+    public function hasManyThroughMiddle(){
         return $this->belongsTo('App\HasManyThroughMiddle');
     }    
 }

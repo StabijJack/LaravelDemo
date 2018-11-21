@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\PolymorphicMember;
+use App\PolymorphicOwnerLeft;
+use App\PolymorphicOwnerRight;
 use Illuminate\Http\Request;
 
 class PolymorphicMemberController extends Controller
@@ -14,7 +16,8 @@ class PolymorphicMemberController extends Controller
      */
     public function index()
     {
-        //
+        $polymorphicMembers = PolymorphicMember::all();
+        return view('polymorphic.member.index', compact('polymorphicMembers'));
     }
 
     /**
@@ -24,7 +27,10 @@ class PolymorphicMemberController extends Controller
      */
     public function create()
     {
-        //
+        $polymorphicOwnerLefts = PolymorphicOwnerLeft::all();
+        $polymorphicOwnerRights = PolymorphicOwnerRight::all();
+        $polymorphicMember = PolymorphicMember::make(['id' => 0 ]);
+        return view('polymorphic.member.create', compact(['polymorphicOwnerLefts','polymorphicOwnerRights','polymorphicMember']));
     }
 
     /**
@@ -35,7 +41,19 @@ class PolymorphicMemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (request('polymorphic_owner_left_id') ==  0) {
+            $this->validate(request(), ['name'=> 'required|min:2', 'polymorphic_owner_right_id'=> 'required|gt:0']);
+            $polymorphicOwnerRight= PolymorphicOwnerRight::where('id', request('polymorphic_owner_right_id'))->first();
+            $polymorphicMember = $polymorphicOwnerRight->members()->create(request(['name']));
+            return redirect(Route('polymorphicMember.index'))->with('status', 'Record added!');
+        }
+        elseif (request('polymorphic_owner_right_id')== 0) {
+            $this->validate(request(), ['name'=> 'required|min:2', 'polymorphic_owner_left_id'=> 'required|gt:0']);
+            $polymorphicOwnerLeft= PolymorphicOwnerLeft::where('id',request('polymorphic_owner_left_id'))->first();
+            $polymorphicMember = $polymorphicOwnerLeft->members()->create(request(['name']));
+            return redirect(Route('polymorphicMember.index'))->with('status', 'Record added!');
+        }
+        else back()->with('er moet een owner gekozen zijn');
     }
 
     /**
@@ -46,7 +64,7 @@ class PolymorphicMemberController extends Controller
      */
     public function show(PolymorphicMember $polymorphicMember)
     {
-        //
+        return view('polymorphic.member.show', compact('polymorphicMember'));
     }
 
     /**
@@ -57,7 +75,7 @@ class PolymorphicMemberController extends Controller
      */
     public function edit(PolymorphicMember $polymorphicMember)
     {
-        //
+        return view('polymorphic.member.edit', compact('polymorphicMember'));
     }
 
     /**
@@ -69,7 +87,9 @@ class PolymorphicMemberController extends Controller
      */
     public function update(Request $request, PolymorphicMember $polymorphicMember)
     {
-        //
+        $this->validate(request(), ['name'=> 'required|min:2']);
+        $polymorphicMember->update($request->all());
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -80,6 +100,12 @@ class PolymorphicMemberController extends Controller
      */
     public function destroy(PolymorphicMember $polymorphicMember)
     {
-        //
+        $polymorphicMember->delete();
+        $url = url()->previous();
+        if(preg_match('*polymorphicMember/[0-9]*',$url)){
+            return redirect(Route('polymorphicMember.index'))->with('status', 'Record destroyed!');
+        }
+
+        return back()->with('status', 'Record destroyed!');
     }
 }

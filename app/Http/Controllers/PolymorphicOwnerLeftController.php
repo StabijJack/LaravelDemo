@@ -14,7 +14,8 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function index()
     {
-        //
+        $polymorphicOwnerLefts = PolymorphicOwnerLeft::all();
+        return view('polymorphic.left.index', compact('polymorphicOwnerLefts'));
     }
 
     /**
@@ -24,7 +25,8 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function create()
     {
-        //
+        $polymorphicOwnerLeft = new PolymorphicOwnerLeft;
+        return view('polymorphic.left.create', compact('polymorphicOwnerLeft'));
     }
 
     /**
@@ -35,7 +37,9 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), ['leftname'=> 'required|min:2']);
+        $polymorphicOwnerLeft = PolymorphicOwnerLeft::create($request->all());
+        return redirect(route('polymorphicOwnerLeft.index'))->with('status', 'New record stored!');
     }
 
     /**
@@ -46,7 +50,7 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function show(PolymorphicOwnerLeft $polymorphicOwnerLeft)
     {
-        //
+        return view('polymorphic.left.show', compact('polymorphicOwnerLeft'));
     }
 
     /**
@@ -57,7 +61,7 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function edit(PolymorphicOwnerLeft $polymorphicOwnerLeft)
     {
-        //
+        return view('polymorphic.left.edit', compact('polymorphicOwnerLeft'));
     }
 
     /**
@@ -69,7 +73,9 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function update(Request $request, PolymorphicOwnerLeft $polymorphicOwnerLeft)
     {
-        //
+        $this->validate(request(), ['leftname'=> 'required|min:2']);
+        $polymorphicOwnerLeft->update($request->all());
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -80,6 +86,7 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function destroy(PolymorphicOwnerLeft $polymorphicOwnerLeft)
     {
-        //
+        $polymorphicOwnerLeft->delete();
+        return redirect(route('polymorphicOwnerLeft.index'))->with('status', 'Record destroyed!');
     }
 }

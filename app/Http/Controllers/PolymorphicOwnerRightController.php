@@ -14,7 +14,8 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function index()
     {
-        //
+        $polymorphicOwnerRights = PolymorphicOwnerRight::all();
+        return view('polymorphic.right.index', compact('polymorphicOwnerRights'));
     }
 
     /**
@@ -24,7 +25,8 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function create()
     {
-        //
+        $polymorphicOwnerRight = new PolymorphicOwnerRight;
+        return view('polymorphic.right.create', compact('polymorphicOwnerRight'));
     }
 
     /**
@@ -35,7 +37,9 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), ['rightname'=> 'required|min:2']);
+        $polymorphicOwnerRight = PolymorphicOwnerRight::create($request->all());
+        return redirect(route('polymorphicOwnerRight.index'))->with('status', 'New record stored!');
     }
 
     /**
@@ -46,7 +50,7 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function show(PolymorphicOwnerRight $polymorphicOwnerRight)
     {
-        //
+        return view('polymorphic.right.show', compact('polymorphicOwnerRight'));
     }
 
     /**
@@ -57,7 +61,7 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function edit(PolymorphicOwnerRight $polymorphicOwnerRight)
     {
-        //
+        return view('polymorphic.right.edit', compact('polymorphicOwnerRight'));
     }
 
     /**
@@ -69,7 +73,9 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function update(Request $request, PolymorphicOwnerRight $polymorphicOwnerRight)
     {
-        //
+        $this->validate(request(), ['rightname'=> 'required|min:2']);
+        $polymorphicOwnerRight->update($request->all());
+        return back()->with('status', 'Record updated!');
     }
 
     /**
@@ -80,6 +86,7 @@ class PolymorphicOwnerRightController extends Controller
      */
     public function destroy(PolymorphicOwnerRight $polymorphicOwnerRight)
     {
-        //
+        $polymorphicOwnerRight->delete();
+        return redirect(route('polymorphicOwnerRight.index'))->with('status', 'Record destroyed!');
     }
 }

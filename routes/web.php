@@ -31,3 +31,8 @@ Route::resource('manyToManyOwnerRight', 'ManyToManyOwnerRightController');
 Route::resource('manyToManyPivot', 'ManyToManyPivotController');
 
 route::resource('hasManyThroughTop', 'HasManyThroughTopController');
+
+route::view('/polymorphichome', 'polymorphic.home')->name('polymorphichome');
+Route::resource('polymorphicOwnerLeft', 'polymorphicOwnerLeftController');
+Route::resource('polymorphicOwnerRight', 'polymorphicOwnerRightController');
+Route::resource('polymorphicMember', 'polymorphicMemberController');

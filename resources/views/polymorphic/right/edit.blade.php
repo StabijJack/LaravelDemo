@@ -1,6 +1,5 @@
-@extends('layouts.app') 
-
-@section('title') Edit Polymorphic @endsection
+@extends('polymorphic.home') 
+@section('subTitle') Edit Right @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

@@ -1,8 +1,6 @@
-@extends('layouts.app') 
-
-@section('title') Show all ManyToManyPivot @endsection
+@extends('manytomany.home') 
+@section('subTitle') All Pivots @endsection
 @section("content")
-<h1>Pivots</h1>
 <div class="row">
   @foreach($manyToManyPivots as $manyToManyPivot)
     <div class="col-3">

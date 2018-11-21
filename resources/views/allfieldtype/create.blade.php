@@ -1,12 +1,10 @@
-@extends('layouts.app') 
-
-@section('title') Create AllFieldType @endsection
+@extends('allfieldtype.home') 
+@section('subTitle') Create @endsection
 @section("content")
 <div class="row">
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        @include('AllFieldType.submenu')
         <form action="{{ route('allFieldType.store') }}" method="POST">
             @csrf
             @include('allfieldtype.allfields')        

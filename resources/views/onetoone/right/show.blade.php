@@ -1,6 +1,5 @@
-@extends('layouts.app') 
-
-@section('title') Show OneToOneRight @endsection
+@extends('onetoone.home') 
+@section('subTitle') Show Right @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

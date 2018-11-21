@@ -1,9 +1,8 @@
-@extends('layouts.app') 
-
+@extends('onetomany.home') 
+@section('subTitle') All Owners @endsection
 @section("content")
-<h2>Owners</h2>
 <div class="row">
-s  @if($oneToManyOwners->count() > 0) 
+  @if($oneToManyOwners->count() > 0) 
     @foreach($oneToManyOwners as $oneToManyOwner)
       <div class="col-3">
         <div class="card">

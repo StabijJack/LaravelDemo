@@ -1,15 +1,14 @@
-@extends('layouts.app') 
-
+@extends('manytomany.home') 
+@section('subTitle') Edit Owner Right @endsection
 @section("content")
 <div class="row">
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h1>OwnerRight</h1>
         @include('manytomany.right.submenu')
         @include('manytomany.right.update')
-        <h2>Members</h2>
-        <p>Has currently {{ $manyToManyOwnerLefts->count() }} members</p>
+        <h2>OwnerLeft</h2>
+        <p>Has currently {{ $manyToManyOwnerLefts->count() }} left owners</p>
         <a class="btn btn-primary info" href="{{ route('manyToManyPivot.create',['leftId' => 0, 'rightId' => $manyToManyOwnerRight->id]) }}" role="button">New Connection</a>
         @foreach ($manyToManyOwnerLefts as $manyToManyOwnerLeft)
           @php

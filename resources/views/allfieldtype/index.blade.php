@@ -1,6 +1,6 @@
-@extends('layouts.app') 
+@extends('allfieldtype.home') 
 
-@section('title') Show all AllFieldType @endsection
+@section('subTitle') All @endsection
 @section("content")
 <div class="row">
   @if($allFieldTypes->count() > 0) 

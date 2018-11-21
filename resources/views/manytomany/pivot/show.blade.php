@@ -1,6 +1,5 @@
-@extends('layouts.app') 
-
-@section('title') Show ManyToManyPivots @endsection
+@extends('manytomany.home') 
+@section('subTitle') Show Pivot @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

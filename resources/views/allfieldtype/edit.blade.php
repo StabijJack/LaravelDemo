@@ -1,6 +1,6 @@
-@extends('layouts.app') 
+@extends('allfieldtype.home') 
 
-@section('title') Edit AllFieldType @endsection
+@section('subTitle') Edit @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

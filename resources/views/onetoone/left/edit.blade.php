@@ -1,4 +1,5 @@
-@extends('layouts.app') 
+@extends('onetoone.home') 
+@section('subTitle') Edit Left @endsection
 
 @section("content")
 <div class="row">

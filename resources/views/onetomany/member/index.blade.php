@@ -1,8 +1,6 @@
-@extends('layouts.app') 
-
-@section('title') Show all OneToOneRight @endsection
+@extends('onetomany.home') 
+@section('subTitle') All Members @endsection
 @section("content")
-<h1>Members</h1>
 <div class="row">
   @foreach($oneToManyMembers as $oneToManyMember)
     <div class="col-3">

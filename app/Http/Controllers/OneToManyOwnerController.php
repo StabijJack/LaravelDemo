@@ -27,7 +27,7 @@ class OneToManyOwnerController extends Controller
     public function create()
     {
         $oneToManyOwner = new OneToManyOwner;
-        view('onetomany.owner.create', compact('oneToManyOwner'));
+        return view('onetomany.owner.create', compact('oneToManyOwner'));
     }
 
     /**

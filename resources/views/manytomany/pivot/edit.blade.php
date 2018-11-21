@@ -1,6 +1,5 @@
-@extends('layouts.app') 
-
-@section('title') Edit ManyToManyPivot @endsection
+@extends('manytomany.home') 
+@section('subTitle') Edit Pivot @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

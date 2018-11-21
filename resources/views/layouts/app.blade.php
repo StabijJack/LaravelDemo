@@ -12,10 +12,6 @@
   </head>
   <body>
     <div class="container-fluid">
-        <a class="btn btn-primary info" href="{{ route('home') }}" role="button">Home</a>
-        {{-- <a class="btn btn-primary info" href="{{ url()->previous() }}" role="button">Back loops back and forward between 2 screens</a> --}}
-        <a href="javascript:history.back()" class="btn btn-primary">Back in history</a>
-
         @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -24,7 +20,6 @@
             </button>
         </div>
         @endif
-    
         @yield('content')
         @include('layouts.errors')
     </div>

@@ -1,12 +1,10 @@
-@extends('layouts.app') 
-
+@extends('manytomany.home') 
+@section('subTitle') Create Owner Left @endsection
 @section("content")
 <div class="row">
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h2>OwnerLeft</h2>
-        @include('manytomany.left.submenu')
         @include('manytomany.left.store')
       </div>
     </div>

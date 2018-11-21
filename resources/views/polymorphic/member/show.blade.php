@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('polymorphic.home') 
+@section('subTitle') Show Member @endsection
 @section('content')
-    <h1>PolyMorphic Members</h1>
     @include('polymorphic.member.submenu')
-    <h2>member name: {{ $polymorphicMember->name }}</h2>
+    <h2>{{ $polymorphicMember->name }}</h2>
     @if ($polymorphicMember->Owner->getTable() == 'polymorphic_owner_lefts')
         <h3>Owner Table LeftName: {{ $polymorphicMember->Owner->leftname }} </h3>
     @else 

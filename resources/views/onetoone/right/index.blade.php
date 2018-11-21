@@ -1,21 +1,16 @@
-@extends('layouts.app') 
-
-@section('title') Show all OneToOneRight @endsection
+@extends('onetoone.home') 
+@section('subTitle') All Right @endsection
 @section("content")
 <div class="row">
-  @if($oneToOneRights->count() > 0) 
-    @foreach($oneToOneRights as $oneToOneRight)
-      <div class="col-3">
-        <div class="card">
-          <div class="card-body">
-            @include('onetoone.right.submenu')
-            @include('onetoone.right.update')
-          </div>
+  @foreach($oneToOneRights as $oneToOneRight)
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          @include('onetoone.right.submenu')
+          @include('onetoone.right.update')
         </div>
       </div>
-    @endforeach
-  @else 
-    <a class="btn btn-primary info" href="{{ route('oneToOneRight.create') }}" role="button"> New</a>
-  @endif
+    </div>
+  @endforeach
 </div>
 @endsection

@@ -1,6 +1,6 @@
-@extends('layouts.app') 
+@extends('allfieldtype.home') 
 
-@section('title') show AllFieldType @endsection
+@section('subTitle') Show @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

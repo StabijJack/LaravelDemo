@@ -1,6 +1,5 @@
-@extends('layouts.app') 
-
-@section('title') Edit OneToOneRight @endsection
+@extends('polymorphic.home') 
+@section('subTitle') Edit Member @endsection
 @section("content")
 <div class="row">
   <div class="col-6">

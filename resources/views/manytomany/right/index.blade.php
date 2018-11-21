@@ -1,7 +1,6 @@
-@extends('layouts.app') 
-
+@extends('manytomany.home') 
+@section('subTitle') All Owner Right @endsection
 @section("content")
-<h2>OwnersRight</h2>
 <div class="row">
   @if($manyToManyOwnerRights->count() > 0) 
     @foreach($manyToManyOwnerRights as $manyToManyOwnerRight)

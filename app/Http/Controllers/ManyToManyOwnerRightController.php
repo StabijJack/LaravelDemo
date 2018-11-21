@@ -25,7 +25,7 @@ class ManyToManyOwnerRightController extends Controller
      */
     public function create()
     {
-        $manyToManyOwnerRights = new ManyToManyOwnerRight;
+        $manyToManyOwnerRight = new ManyToManyOwnerRight;
         return view('manytomany.right.create', compact('manyToManyOwnerRight'));
     }
 

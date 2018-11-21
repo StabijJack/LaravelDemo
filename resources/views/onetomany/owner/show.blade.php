@@ -1,18 +1,15 @@
-@extends('layouts.app') 
-
+@extends('onetomany.home') 
+@section('subTitle') Show Owner @endsection
 @section("content")
 <div class="row">
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h2>Owner</h2>
         @include('onetomany.owner.submenu')
-        @include('onetomany.owner.update')
+        @include('onetomany.owner.allfields')
         <h2>Members</h2>
-        @include('oneToMany.member.store')
         @foreach ($oneToManyMembers as $oneToManyMember)
-            @include('onetomany.member.update')
-            @include('onetomany.member.destroy')
+            @include('onetomany.member.allfields')
         @endforeach
       </div>
     </div>

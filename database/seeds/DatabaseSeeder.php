@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             ManyToManySeeder::class,
             HasManyThroughSeeder::class,
             PolymorphicSeeder::class,
-            ManyToManyPolimorphicSeeder::class
+            ManyToManyPolimorphicSeeder::class,
+            AuthorBookGenreSeeder::class
         ]);
     }
 }

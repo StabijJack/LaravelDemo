@@ -17,7 +17,7 @@ class PolymorphicMemberController extends Controller
     public function index()
     {
         $polymorphicMembers = PolymorphicMember::all();
-        return view('polymorphic.member.index', compact('polymorphicMembers'));
+        return view('databaserelations/polymorphic.member.index', compact('polymorphicMembers'));
     }
 
     /**
@@ -30,7 +30,7 @@ class PolymorphicMemberController extends Controller
         $polymorphicOwnerLefts = PolymorphicOwnerLeft::all();
         $polymorphicOwnerRights = PolymorphicOwnerRight::all();
         $polymorphicMember = PolymorphicMember::make(['id' => 0 ]);
-        return view('polymorphic.member.create', compact(['polymorphicOwnerLefts','polymorphicOwnerRights','polymorphicMember']));
+        return view('databaserelations/polymorphic.member.create', compact(['polymorphicOwnerLefts','polymorphicOwnerRights','polymorphicMember']));
     }
 
     /**
@@ -64,7 +64,7 @@ class PolymorphicMemberController extends Controller
      */
     public function show(PolymorphicMember $polymorphicMember)
     {
-        return view('polymorphic.member.show', compact('polymorphicMember'));
+        return view('databaserelations/polymorphic.member.show', compact('polymorphicMember'));
     }
 
     /**
@@ -75,7 +75,7 @@ class PolymorphicMemberController extends Controller
      */
     public function edit(PolymorphicMember $polymorphicMember)
     {
-        return view('polymorphic.member.edit', compact('polymorphicMember'));
+        return view('databaserelations/polymorphic.member.edit', compact('polymorphicMember'));
     }
 
     /**

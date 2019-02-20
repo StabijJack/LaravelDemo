@@ -16,7 +16,7 @@ class OneToManyOwnerController extends Controller
     public function index()
     {
         $oneToManyOwners = OneToManyOwner::all();
-        return view('onetomany.owner.index',compact('oneToManyOwners'));
+        return view('databaserelations/onetomany.owner.index',compact('oneToManyOwners'));
     }
 
     /**
@@ -27,7 +27,7 @@ class OneToManyOwnerController extends Controller
     public function create()
     {
         $oneToManyOwner = new OneToManyOwner;
-        return view('onetomany.owner.create', compact('oneToManyOwner'));
+        return view('databaserelations/onetomany.owner.create', compact('oneToManyOwner'));
     }
 
     /**
@@ -53,7 +53,7 @@ class OneToManyOwnerController extends Controller
     {
         $oneToManyMembers = $oneToManyOwner->oneToManyMembers()->get();
         $oneToManyMember = new OneToManyMember;
-        return view('onetomany.owner.show', compact('oneToManyOwner','oneToManyMembers','oneToManyMember'));
+        return view('databaserelations/onetomany.owner.show', compact('oneToManyOwner','oneToManyMembers','oneToManyMember'));
     }
 
     /**
@@ -66,7 +66,7 @@ class OneToManyOwnerController extends Controller
     {
         $oneToManyMembers = $oneToManyOwner->oneToManyMembers()->get();
         $oneToManyMember = new OneToManyMember;
-        return view('onetomany.owner.edit', compact('oneToManyOwner','oneToManyMembers','oneToManyMember'));
+        return view('databaserelations/onetomany.owner.edit', compact('oneToManyOwner','oneToManyMembers','oneToManyMember'));
     }
 
     /**

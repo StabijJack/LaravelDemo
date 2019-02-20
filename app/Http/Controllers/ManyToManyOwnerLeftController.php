@@ -15,7 +15,7 @@ class ManyToManyOwnerLeftController extends Controller
     public function index()
     {
         $manyToManyOwnerLefts = ManyToManyOwnerLeft::all();
-        return view('manytomany.left.index', compact('manyToManyOwnerLefts'));
+        return view('databaserelations/manytomany.left.index', compact('manyToManyOwnerLefts'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ManyToManyOwnerLeftController extends Controller
     public function create()
     {
         $manyToManyOwnerLeft = new ManyToManyOwnerLeft;
-        return view('manytomany.left.create', compact('manyToManyOwnerLeft'));
+        return view('databaserelations/manytomany.left.create', compact('manyToManyOwnerLeft'));
     }
 
     /**
@@ -51,7 +51,7 @@ class ManyToManyOwnerLeftController extends Controller
     public function show(ManyToManyOwnerLeft $manyToManyOwnerLeft)
     {
         $manyToManyOwnerRights = $manyToManyOwnerLeft->manyToManyOwnerRights()->get(); 
-        return view('manytomany.left.show', compact('manyToManyOwnerLeft', 'manyToManyOwnerRights'));
+        return view('databaserelations/manytomany.left.show', compact('manyToManyOwnerLeft', 'manyToManyOwnerRights'));
     }
 
     /**
@@ -63,7 +63,7 @@ class ManyToManyOwnerLeftController extends Controller
     public function edit(ManyToManyOwnerLeft $manyToManyOwnerLeft)
     {
         $manyToManyOwnerRights = $manyToManyOwnerLeft->manyToManyOwnerRights()->get(); 
-        return view('manytomany.left.edit', compact('manyToManyOwnerLeft', 'manyToManyOwnerRights'));
+        return view('databaserelations/manytomany.left.edit', compact('manyToManyOwnerLeft', 'manyToManyOwnerRights'));
 
     }
 

@@ -16,7 +16,7 @@ class OneToManyMemberController extends Controller
     public function index()
     {
         $oneToManyMembers = OneToManyMember::all();
-        return view('onetomany.member.index', compact('oneToManyMembers'));
+        return view('databaserelations/onetomany.member.index', compact('oneToManyMembers'));
     }
 
     /**
@@ -28,7 +28,7 @@ class OneToManyMemberController extends Controller
     {
         // not used because owner is mandatory
         $oneToManyMember = new OneToManyMember;
-        return view('onetomany.member.create', compact('oneToManyMember'));
+        return view('databaserelations/onetomany.member.create', compact('oneToManyMember'));
     }
 
     /**
@@ -56,7 +56,7 @@ class OneToManyMemberController extends Controller
     public function show(OneToManyMember $oneToManyMember)
     {
         $oneToManyOwner = $oneToManyMember->oneToManyOwner;
-        return view('onetomany.member.show', compact('oneToManyMember', 'oneToManyOwner'));
+        return view('databaserelations/onetomany.member.show', compact('oneToManyMember', 'oneToManyOwner'));
     }
 
     /**
@@ -67,7 +67,7 @@ class OneToManyMemberController extends Controller
      */
     public function edit(OneToManyMember $oneToManyMember)
     {
-        return view('onetomany.member.edit', compact('oneToManyMember'));
+        return view('databaserelations/onetomany.member.edit', compact('oneToManyMember'));
     }
 
     /**

@@ -15,7 +15,7 @@ class PolymorphicOwnerLeftController extends Controller
     public function index()
     {
         $polymorphicOwnerLefts = PolymorphicOwnerLeft::all();
-        return view('polymorphic.left.index', compact('polymorphicOwnerLefts'));
+        return view('databaserelations/polymorphic.left.index', compact('polymorphicOwnerLefts'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PolymorphicOwnerLeftController extends Controller
     public function create()
     {
         $polymorphicOwnerLeft = new PolymorphicOwnerLeft;
-        return view('polymorphic.left.create', compact('polymorphicOwnerLeft'));
+        return view('databaserelations/polymorphic.left.create', compact('polymorphicOwnerLeft'));
     }
 
     /**
@@ -50,7 +50,7 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function show(PolymorphicOwnerLeft $polymorphicOwnerLeft)
     {
-        return view('polymorphic.left.show', compact('polymorphicOwnerLeft'));
+        return view('databaserelations/polymorphic.left.show', compact('polymorphicOwnerLeft'));
     }
 
     /**
@@ -61,7 +61,7 @@ class PolymorphicOwnerLeftController extends Controller
      */
     public function edit(PolymorphicOwnerLeft $polymorphicOwnerLeft)
     {
-        return view('polymorphic.left.edit', compact('polymorphicOwnerLeft'));
+        return view('databaserelations/polymorphic.left.edit', compact('polymorphicOwnerLeft'));
     }
 
     /**

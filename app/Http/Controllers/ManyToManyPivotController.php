@@ -20,7 +20,7 @@ class ManyToManyPivotController extends Controller
         $manyToManyOwnerLefts = ManyToManyOwnerLeft::all();
         $manyToManyOwnerRights = ManyToManyOwnerRight::all();
         $manyToManyPivots = ManyToManyPivot::all();
-        return view('manytomany.pivot.index', compact('manyToManyPivots', 'manyToManyOwnerLefts', 'manyToManyOwnerRights'));
+        return view('databaserelations/manytomany.pivot.index', compact('manyToManyPivots', 'manyToManyOwnerLefts', 'manyToManyOwnerRights'));
     }
 
     /**
@@ -55,7 +55,7 @@ class ManyToManyPivotController extends Controller
             $origin = '';
         }
         $manyToManyPivot = ManyToManyPivot::make(['id' => 0 ]);// om aan te geven dat het een nieuwe is
-        return view('manytomany.pivot.create',compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights', 'origin'));
+        return view('databaserelations/manytomany.pivot.create',compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights', 'origin'));
     }
 
     /**
@@ -109,7 +109,7 @@ class ManyToManyPivotController extends Controller
     {
         $manyToManyOwnerLefts = ManyToManyOwnerLeft::all();
         $manyToManyOwnerRights = ManyToManyOwnerRight::all();
-        return view('manytomany.pivot.show', compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights'));
+        return view('databaserelations/manytomany.pivot.show', compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights'));
     }
 
     /**
@@ -122,7 +122,7 @@ class ManyToManyPivotController extends Controller
     {
         $manyToManyOwnerLefts = ManyToManyOwnerLeft::all();
         $manyToManyOwnerRights = ManyToManyOwnerRight::all();
-        return view('manytomany.pivot.edit', compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights'));
+        return view('databaserelations/manytomany.pivot.edit', compact('manyToManyPivot', 'manyToManyOwnerLefts', 'manyToManyOwnerRights'));
     }
 
     /**

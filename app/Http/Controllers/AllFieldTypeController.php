@@ -16,7 +16,7 @@ class AllFieldTypeController extends Controller
     {
         $allFieldTypes = AllFieldType::all();
 
-        return view('allfieldtype.index',compact('allFieldTypes'));
+        return view('databaserelations/allfieldtype.index',compact('allFieldTypes'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AllFieldTypeController extends Controller
     public function create()
     {
         $allFieldType = new AllFieldType;
-        return view('allfieldtype/create', compact('allFieldType'));
+        return view('databaserelations/allfieldtype/create', compact('allFieldType'));
     }
 
     /**
@@ -53,7 +53,7 @@ class AllFieldTypeController extends Controller
      */
     public function show(AllFieldType $allFieldType)
     {
-        return view('allfieldtype.show',compact('allFieldType'));
+        return view('databaserelations/allfieldtype.show',compact('allFieldType'));
     }
 
     /**
@@ -64,7 +64,7 @@ class AllFieldTypeController extends Controller
      */
     public function edit(AllFieldType $allFieldType)
     {
-        return view('allfieldtype.edit',compact('allFieldType'));
+        return view('databaserelations/allfieldtype.edit',compact('allFieldType'));
     }
 
     /**

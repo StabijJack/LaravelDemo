@@ -1,7 +1,7 @@
 <?php
 Route::group(['prefix' => 'databaserelations'], function () {
     
-    Route::view('/', 'databaserelations.home')->name('home');
+    Route::view('/', 'databaserelations.home')->name('databaserelationshome');
     
     Route::resource('allFieldType', 'AllFieldTypeController');
     

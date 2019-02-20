@@ -11,4 +11,5 @@
 |
 */
 
+Route::view('/', 'welcome')->name('welcome');
 include('includes/databaserelations.php');

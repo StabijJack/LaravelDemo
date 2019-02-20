@@ -1,4 +1,4 @@
-<a class="btn btn-primary info" href="{{ route('home') }}" role="button">Home</a>
+<a class="btn btn-primary info" href="{{ route('databaserelationshome') }}" role="button">Home</a>
 <a class="btn btn-primary info" href="{{ route('allFieldType.index') }}" role="button">FieldTypes</a>
 <a class="btn btn-primary info" href="{{ route('onetoonehome') }}" role="button"> OneToOne</a>
 <a class="btn btn-primary info" href="{{ route('onetomanyhome') }}" role="button"> OneToMany</a>
